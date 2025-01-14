@@ -1,4 +1,10 @@
 {
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "@sendgrid/mail": "^8.1.4",
     "bcrypt": "^5.1.1",
@@ -11,3 +17,4 @@
     "mysql": "^2.18.1"
   }
 }
+
