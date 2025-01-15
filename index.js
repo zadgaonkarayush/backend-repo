@@ -26,10 +26,11 @@ sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
 const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'foragingnative',
+   host: 'autorack.proxy.rlwy.net',    // Railway database host
+  port: 59875,                        // Railway database port
+  user: 'root',                       // Railway database username
+  password: 'AQzPCiOiHpqqKFjMRVDiMscKhbgyhrNL', // Railway database password
+  database: 'railway'
 });
 con.connect((err) => {
   if (err) {
