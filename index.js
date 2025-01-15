@@ -41,7 +41,7 @@ console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 // });
 
 const con = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
+   host: process.env.MYSQL_HOST,   
   port: process.env.MYSQL_PORT,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
@@ -50,7 +50,11 @@ const con = mysql.createConnection({
 
 con.connect((err) => {
   if (err) {
+
     console.log('Error connecting to database:', err);
+
+    console.log('Not Connected to Database !',err);
+
     return;
   } else {
     console.log('Connected to database');
