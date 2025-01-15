@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const multer = require('multer');
@@ -25,21 +25,37 @@ app.use(express.urlencoded({ extended: true }));
 sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
+// const con = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'foragingnative',
+// });
+// con.connect((err) => {
+//   if (err) {
+//     console.log('Not Connected to Database !');
+//     return;
+//   } else {
+//     console.log('Connected to database');
+//   }
+// });
+
 const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'foragingnative',
+  host: process.env.MYSQL_HOST,
+  port: process.env.MYSQL_PORT,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
+
 con.connect((err) => {
   if (err) {
-    console.log('Not Connected to Database !');
+    console.log('Error connecting to database:', err);
     return;
   } else {
     console.log('Connected to database');
   }
 });
-
 const SECRET_KEY = 'my_secret_key';
 
 app.post('/register', (req, res) => {
