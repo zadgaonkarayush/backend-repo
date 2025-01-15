@@ -26,11 +26,11 @@ sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 console.log('SENDGRID_API_KEY:', process.env.SENDGRID_API_KEY);
 
 const con = mysql.createConnection({
-   host: 'mysql.railway.internal',    
-  port: 3306,                        
-  user: 'root',                       
-  password: 'AQzPCiOiHpqqKFjMRVDiMscKhbgyhrNL', 
-  database: 'railway'
+   host: process.env.MYSQL_HOST,    // Use environment variable
+  port: process.env.MYSQL_PORT,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
 con.connect((err) => {
   if (err) {
